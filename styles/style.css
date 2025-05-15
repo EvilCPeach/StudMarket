@@ -1,0 +1,142 @@
+@font-face{
+    font-family: Par;
+    src: url(../fonts/Rubik-VariableFont_wght.ttf);
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+*::selection{
+    color: white;
+    background: none;
+}
+.preloader{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #2A5C8F;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.5s;
+}
+.spinner{
+  width: 50px;
+  height: 50px;
+  border-top: 5px solid #FF6B35;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+.hidden{
+    display: none;
+    animation: none;
+}
+.notScroll{
+    overflow: hidden;
+}
+a{
+    color: rgb(38, 38, 38);
+    font-size: 26px;
+    text-decoration: none;
+    font-weight: 400;
+    transition-duration: 0.5s;
+}
+a,p{
+    font-family: Par;
+}
+header,.links{
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+}
+header{
+    background-color: #59a0e7;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    transition-duration: 0.6s;
+}
+.links{
+    justify-content: space-between;
+    width: 355px;
+    margin: 0 0 0 30px;
+}
+a:hover,a:focus{
+    color: #FF6B35;
+}
+a:active{
+    color: white;
+}
+.logo>img{
+    max-width: 200px;
+    max-height: 200px;
+}
+.entry{
+    position: absolute;
+    right: 75px;
+}
+.profile{
+    background-color: rgba(255, 107, 53, 0);
+    border: none;
+    border-radius: 50%;
+    transition-duration: 0.6s;
+}
+.profile>img,.profile{
+    max-width: 56px;
+    max-height: 56px;
+}
+.profile:hover,.profile:focus{
+    cursor: pointer;
+    background-color: white;
+}
+.profile:active{
+    background-color: #FF6B35;
+}
+.dropdown-profile{
+    border: 1px solid #2b2b2ba1;
+    border-radius: 15px;
+    background-color: white;
+    width: 190px;
+    height: 90px;
+    position: absolute;
+    right: -64px;
+    top: 88px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    opacity: 0;
+    transition-duration: 0.7s;
+}
+.dropdown-profile>a{
+    border: none;
+    border-radius: 20px;
+    transition-duration: 0.8s;
+}
+.dropdown-profile>a:active,.dropdown-profile>a::selection{
+    background-color: #FF6B35;
+}
+.ss{
+    background-color: crimson;
+    width: 100%;
+    height: 5000px;
+    margin: 110px 0 0 0;
+}
+footer{
+    background-color: black;
+    width: 100%;
+    height: 126px;
+    position: static;
+    bottom: 0;
+}
+@keyframes spin{
+    0% { 
+        transform: rotate(0deg); 
+    }
+    100% { 
+        transform: rotate(360deg); 
+    }
+}
