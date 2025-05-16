@@ -10,24 +10,43 @@
     color: white;
     background: none;
 }
+.preloader,.links,.dropdown-profile,.modal-top,.closeModal,.entryForm,.slider>button,.images{
+    display: flex;
+}
+.preloader,header,.bgModal,.slider,.image,footer{
+    width: 100%;
+}
+.preloader,header,.links,.modal-top{
+    align-items: center;
+}
+.spinner,.profile,.closeModal,.slider>button,.buttonHamburger{
+    border-radius: 50%;
+}
+.preloader,header{
+    position: fixed;
+}
+.dropdown-profile,.bgModal,.slider>button{
+    position: absolute;
+}
+.profile,.dropdown-profile>a,.closeModal,.slider>button,.buttonHamburger{
+    border: none;
+}
+.profile:hover,.profile:focus,.modal-top>div>p:hover,.closeModal:hover,.slider>button:hover{
+    cursor: pointer;
+}
 .preloader{
-  position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
   height: 100%;
   background-color: #2A5C8F;
   z-index: 100;
-  display: flex;
   justify-content: center;
-  align-items: center;
   transition: opacity 0.5s;
 }
 .spinner{
   width: 50px;
   height: 50px;
   border-top: 5px solid #FF6B35;
-  border-radius: 50%;
   animation: spin 1s linear infinite;
 }
 .hidden{
@@ -48,16 +67,18 @@ a,p{
     font-family: Par;
 }
 header,.links{
-    display: flex;
     flex-flow: row nowrap;
-    align-items: center;
 }
 header{
     background-color: #59a0e7;
-    width: 100%;
-    position: fixed;
     top: 0;
     transition-duration: 0.6s;
+    z-index: 15;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+}
+.logo{
+    margin: 10px 0 8px 30px;
 }
 .links{
     justify-content: space-between;
@@ -75,13 +96,10 @@ a:active{
     max-height: 200px;
 }
 .entry{
-    position: absolute;
-    right: 75px;
+    grid-column: 12;
 }
 .profile{
     background-color: rgba(255, 107, 53, 0);
-    border: none;
-    border-radius: 50%;
     transition-duration: 0.6s;
 }
 .profile>img,.profile{
@@ -89,7 +107,6 @@ a:active{
     max-height: 56px;
 }
 .profile:hover,.profile:focus{
-    cursor: pointer;
     background-color: white;
 }
 .profile:active{
@@ -101,36 +118,171 @@ a:active{
     background-color: white;
     width: 190px;
     height: 90px;
-    position: absolute;
-    right: -64px;
-    top: 88px;
+    right: 0px;
+    top: 110px;
     text-align: center;
-    display: flex;
     flex-direction: column;
     justify-content: space-around;
     opacity: 0;
     transition-duration: 0.7s;
+    z-index: 10;
 }
 .dropdown-profile>a{
-    border: none;
     border-radius: 20px;
     transition-duration: 0.8s;
 }
 .dropdown-profile>a:active,.dropdown-profile>a::selection{
     background-color: #FF6B35;
 }
-.ss{
+.buttonHamburger{
+    grid-column:11;
+    transform: rotate(90deg);
+    display: none;
+}
+.buttonHamburger,.buttonHamburger>img{
+    max-width: 30px;
+    max-height: 30px;
+}
+.dropdown-links{
+    background-color: white;
+    border: 1px solid #2b2b2ba1;
+    border-radius: 10px;
+    position: absolute;
+    top: 100px;
+    left: 410px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    opacity: 0;
+    transition-duration: 0.6s;
+}
+.parentModal{
+    position: absolute;
+    top: 0;
+    z-index: 15;
+    width: 65%;
+    height: 400px;
+    transition-duration: 0.6s;
+}
+.showModal{
+    display: flex;
+    justify-content: flex-end;
+}
+.bgModal{
+    height: 2000px;
+    background-color: rgba(17, 17, 17, 0.489);
+    z-index: 14;
+}
+.modal{
+    background-color: white;
+    width: 400px;
+    height: 250px;
+    border: 1px solid rgba(30, 30, 30, 0.533);
+    border-radius: 20px;
+    z-index: 2;
+    opacity: 0;
+    transition-duration: 0.6s;
+}
+.modal-top{
+    margin: 10px 0 0 0;
+}
+.modal-top>div>p{
+    font-size: 24px;
+}
+.modalEntry{
+    margin: 0 20px;
+}
+.closeModal{
+    position: relative;
+    right: -110px;
+    transition-duration: 0.6s;
+}
+.closeModal:hover{
+    background-color: #FF6B35;
+}
+.entryForm{
+    height: 120px;
+    flex-direction: column;
+    justify-content: space-between;
+    align-content: center;
+    flex-wrap: wrap;
+    margin: 40px 0 0 0;
+}
+.inputPadding{
+    padding: 0 0 0 7px;
+}
+.entryForm>input{
+    height: 30px;
+    border: 1px solid rgba(30, 30, 30, 0.533);
+    border-radius: 7px;
+}
+.closeModal>img{
+    max-width: 30px;
+    max-height: 30px;
+}
+.slider{
     background-color: crimson;
-    width: 100%;
     height: 5000px;
     margin: 110px 0 0 0;
+    overflow: hidden;
+}
+.slider>button{
+    top: 50%;
+    transition-duration: 0.6s;
+}
+.slider>button:hover{
+    background-color: #FF6B35;
+}
+.slider>button>img{
+    max-width: 30px;
+    max-height: 30px;
+}
+.previous{
+    transform: rotate(180deg);
+    left: 50px;
+}
+.next{
+    right: 50px;
+}
+.images{
+    width: 5615px;
+    transition-duration: 0.6s;
+}
+.image{
+    height: 800px;
+}
+.image:first-child{
+    background-color: #2A5C8F;
+}
+.image:nth-child(2){
+    background-color: #96dc91;
+}
+.image:last-child{
+    background-color: darkred;
 }
 footer{
-    background-color: black;
-    width: 100%;
+    background-color: rgb(55, 165, 156);
     height: 126px;
     position: static;
     bottom: 0;
+}
+@media screen and (max-width:810px) {
+    header{
+        grid-template-columns: repeat(6, 1fr);
+    }
+    .links{
+        display: none;
+    }
+    .buttonHamburger{
+        display: flex;
+        grid-column: 5;
+    }
+    .entry{
+        grid-column: 6;
+    }
+    .parentModal{
+        width: 80%;
+    }
 }
 @keyframes spin{
     0% { 
