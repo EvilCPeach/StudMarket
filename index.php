@@ -27,7 +27,7 @@
             <a href="#aboutUs">О нас</a>
             <a href="#portfolio">Портфолио</a>
         </section>
-        <button class="buttonHamburger" id="buttonHamburger">
+        <button class="buttonHamburger hidden" id="buttonHamburger">
             <img src="./images/free-icon-arrow-right-1549454.png" alt="">
         </button>
         <section class="dropdown-links" id="dropdown-links">
@@ -66,7 +66,7 @@
             </form>
         </section>
     </main>
-    <main class="slider">
+    <main class="slider" id="up">
         <section class="images" id="images">
             <article class="image">
                 
@@ -86,11 +86,14 @@
         </button>
     </main>
     <footer>
+        <a href="#" class="logo">
+            <img src="./images/logo_1.svg" alt="">
+        </a>
         <section class="footer-links">
             <a href="#">Главная</a>
             <a href="#aboutUs">О нас</a>
             <a href="#portfolio">Портфолио</a>
-            <a href="#">Вверх</a>
+            <a href="#up">Вверх</a>
         </section>
         <p>©Дронов Д.С. 2025 специально для ГАУ КО "Колледж предпринимательства"</p>
     </footer>

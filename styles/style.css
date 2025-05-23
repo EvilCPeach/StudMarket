@@ -262,9 +262,25 @@ a:active{
 }
 footer{
     background-color: rgb(55, 165, 156);
-    height: 126px;
+    max-height: 135px;
     position: static;
-    bottom: 0;
+    display: grid;
+    grid-template-columns: repeat(12,1fr);
+}
+footer>.logo{
+    grid-column: 2;
+}
+footer>section{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    grid-column: 4 / 8;
+}
+footer>p{
+    text-align: center;
+    display: flex;
+    align-items: center;
+    grid-column: 9 / 12;
 }
 @media screen and (max-width:810px) {
     header{

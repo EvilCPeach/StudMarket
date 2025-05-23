@@ -20,6 +20,18 @@ const buttonHamburger = document.getElementById('buttonHamburger').addEventListe
         dropdownLinks.style.opacity = '0';
     }
 });
+const links = document.querySelectorAll('a[href^="#"]').forEach(link =>{
+    link.addEventListener('click', function(event){
+        event.preventDefault();
+        const targetLink = link.getAttribute('href');
+        const targetElement = document.querySelector(targetLink);
+        if(targetElement){
+            targetElement.scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+    });
+});
 document.addEventListener('scroll', function(){
     dropdownProfile.style.opacity = '0';
     dropdownLinks.style.opacity = '0';
