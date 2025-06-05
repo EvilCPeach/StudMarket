@@ -2,6 +2,10 @@
     font-family: Par;
     src: url(../fonts/Rubik-VariableFont_wght.ttf);
 }
+@font-face {
+    font-family: Title;
+    src: url(../fonts/Oswald-VariableFont_wght.ttf);
+}
 *{
     margin: 0;
     padding: 0;
@@ -10,7 +14,20 @@
     color: white;
     background: none;
 }
-.preloader,.links,.dropdown-profile,.modal-top,.closeModal,.entryForm,.slider>button,.images{
+h1,h2,h3,h4,h5{
+    font-family: Title;
+}
+a{
+    color: rgb(38, 38, 38);
+    font-size: 26px;
+    text-decoration: none;
+    font-weight: 400;
+    transition-duration: 0.5s;
+}
+a,p{
+    font-family: Par;
+}
+.preloader,.links,.dropdown-profile,.modal-top,.closeModal,.entryForm,.slider>button,.images,.showForm,.dropdown-links,.showModal,.title{
     display: flex;
 }
 .preloader,header,.bgModal,.slider,.image,footer{
@@ -56,15 +73,16 @@
 .notScroll{
     overflow: hidden;
 }
-a{
-    color: rgb(38, 38, 38);
-    font-size: 26px;
-    text-decoration: none;
-    font-weight: 400;
-    transition-duration: 0.5s;
+.showForm{
+    flex-direction: column;
+    justify-content: space-between;
+    align-content: center;
+    flex-wrap: wrap;
 }
-a,p{
-    font-family: Par;
+.up{
+    background-color: rgba(255, 255, 255, 0);
+    width: 100%;
+    height: 20px;
 }
 header,.links{
     flex-flow: row nowrap;
@@ -150,7 +168,6 @@ a:active{
     position: absolute;
     top: 100px;
     left: 410px;
-    display: flex;
     flex-direction: column;
     text-align: center;
     opacity: 0;
@@ -165,7 +182,6 @@ a:active{
     transition-duration: 0.6s;
 }
 .showModal{
-    display: flex;
     justify-content: flex-end;
 }
 .bgModal{
@@ -207,6 +223,7 @@ a:active{
     align-content: center;
     flex-wrap: wrap;
     margin: 40px 0 0 0;
+    transition-duration: 0.6s;
 }
 .inputPadding{
     padding: 0 0 0 7px;
@@ -216,13 +233,41 @@ a:active{
     border: 1px solid rgba(30, 30, 30, 0.533);
     border-radius: 7px;
 }
+.entryForm>input:last-child{
+    transition-duration: 0.6s;
+    background-color: #FF6B35;
+}
+.entryForm>input:last-child:hover{
+    background-color: #59a0e7;
+    color: white;
+    cursor: pointer;
+}
+.registrationForm{
+    height: 150px;
+    margin: 20px 0 0 0;
+    transition-duration: 0.6s;
+}
+.registrationForm>input{
+    height: 30px;
+    border: 1px solid rgba(30, 30, 30, 0.533);
+    border-radius: 7px;
+}
+.registrationForm>input:last-child{
+    transition-duration: 0.6s;
+    background-color: #FF6B35;
+}
+.registrationForm>input:last-child:hover{
+    background-color: #59a0e7;
+    color: white;
+    cursor: pointer;
+}
 .closeModal>img{
     max-width: 30px;
     max-height: 30px;
 }
 .slider{
     background-color: crimson;
-    height: 5000px;
+    height: 800px;
     margin: 110px 0 0 0;
     overflow: hidden;
 }
@@ -259,6 +304,14 @@ a:active{
 }
 .image:last-child{
     background-color: darkred;
+}
+.title{
+    width: 100%;
+    height: 50px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 22px;
 }
 footer{
     background-color: rgb(55, 165, 156);

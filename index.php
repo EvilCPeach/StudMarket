@@ -1,10 +1,23 @@
 <?php
     require_once './config/link.php';
     session_start();
-    $select = " SELECT * FROM `roles` ";
-    $querySelect = $link->prepare($select);
-    $querySelect->execute();
-    $result = $querySelect->fetchAll(PDO::FETCH_ASSOC);
+    if($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST)){
+        $inputEmail = $_POST['userEmail'];
+        $inputPassword = $_POST['userPassword'];
+        $select = " SELECT `email-user` AS 'Почта', `password-user` AS 'Пароль', `id-role` AS 'Роль' 
+        FROM `users`
+        JOIN `roles` ON `roles`.`id-role` = `users`.`role-user`
+        WHERE `email-user` = '$inputEmail' ";
+        $querySelect = $link->prepare($select);
+        $querySelect->execute();
+        $resultSelect = $querySelect->fetchAll(PDO::FETCH_ASSOC);
+        foreach($resultSelect as $user){
+            $userPassword = $user['Пароль'];
+            if(password_verify($inputPassword,$userPassword)){
+                header('location: pages/userPage.php');
+            }
+        }
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,6 +30,9 @@
 <body class="notScroll">
     <main class="preloader" id="preloader">
         <section class="spinner" id="spinner"></section>
+    </main>
+    <main class="up" id="up">
+
     </main>
     <header class="" id="header">
         <a href="" class="logo">
@@ -50,19 +66,25 @@
         <section class="modal" id="modal">
             <article class="modal-top">
                 <div class="modalEntry">
-                    <p>Вход</p>
+                    <p id="entryShow">Вход</p>
                 </div>
                 <div class="registration">
-                    <p>Регистрация</p>
+                    <p id="regShow">Регистрация</p>
                 </div>
                 <button class="closeModal" id="closeModal">
                     <img src="./images/close-icon.png" alt="Закрыть">
                 </button>
             </article>
-            <form action="" method="POST" class="entryForm">
-                <input type="email" placeholder="Введите почту" class="inputPadding" required>
-                <input type="password" placeholder="Введтие пароль" class="inputPadding" required>
+            <form action="" method="POST" class="entryForm" id="entryForm">
+                <input type="email" placeholder="Введите почту" name="userEmail" class="inputPadding" required>
+                <input type="password" placeholder="Введтие пароль" name="userPassword" class="inputPadding" required>
                 <input type="submit" value="Войти">
+            </form>
+            <form action="./functions/registration.php" method="POST" class="registrationForm hidden" id="regForm">
+                <input type="email" placeholder="Введите почту" name="userEmail" class="inputPadding" required>
+                <input type="password" placeholder="Придумайте пароль" name="userPassword" class="inputPadding" required>
+                <input type="password" placeholder="Повторите пароль" name="userPasswordClone" class="inputPadding" required>
+                <input type="submit" value="Зарегистрироваться">
             </form>
         </section>
     </main>
@@ -85,12 +107,20 @@
             <img src="./images/free-icon-arrow-right-1549454.png" alt="">
         </button>
     </main>
+    <main class="aboutUs">
+        <section class="title">
+            <h2>О нас</h2>
+        </section>
+        <section class="textAboutUs">
+            <p>С помощью маркетплейса «СтудМаркета» студенты предоставляют свои профессиональные услуги в разных сферах креативных индустрий Калининградской области. А для работодателей в свою очередь - «СтудМаркет» простой способ найти специалистов среди студентов для своей специализации.</p>
+        </section>
+    </main>
     <footer>
         <section class="footer-links">
             <a href="#">Главная</a>
             <a href="#aboutUs">О нас</a>
             <a href="#portfolio">Портфолио</a>
-            <a href="#">Вверх</a>
+            <a href="#up">Вверх</a>
         </section>
         <p>©Дронов Д.С. 2025 специально для ГАУ КО "Колледж предпринимательства"</p>
     </footer>

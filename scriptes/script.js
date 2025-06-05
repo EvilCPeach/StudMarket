@@ -1,4 +1,16 @@
 const header = document.getElementById('header');
+const links = document.querySelectorAll('a[href^="#"]').forEach(link =>{
+    link.addEventListener('click', function(event){
+        event.preventDefault();
+        const targetLink = link.getAttribute('href');
+        const targetElement = document.querySelector(targetLink);
+        if(targetElement){
+            targetElement.scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+    });
+});
 const dropdownLinks = document.getElementById('dropdown-links');
 const dropdownProfile = document.getElementById('dropdown-profile');
 let profileClicks = 0;
@@ -47,10 +59,41 @@ const modal = document.getElementById('modal');
 const bgModal = document.getElementById('bgModal');
 const closeModal = document.getElementById('closeModal').addEventListener('click', function(){
     modal.style.opacity = '0';
-    bgModal.classList.add('hidden');
-    body.classList.remove('notScroll');
-    parentModal.classList.remove('showModal');
-    parentModal.classList.add('hidden');
+    let disableModal = setInterval(() => {
+        bgModal.classList.add('hidden');
+        body.classList.remove('notScroll');
+        parentModal.classList.remove('showModal');
+        parentModal.classList.add('hidden');
+        if(parentModal.classList.contains('hidden')){
+            clearInterval(disableModal);
+        }
+    }, 300);
+});
+const entryForm = document.getElementById('entryForm');
+const regForm = document.getElementById('regForm');
+const modalEntry = document.getElementById('entryShow').addEventListener('click', function(){
+    entryForm.style.opacity = '100';
+    regForm.style.opacity = '0';
+    let disableInterval = setInterval(() => {
+        regForm.classList.add('hidden');
+        regForm.classList.remove('showForm')
+        entryForm.classList.remove('hidden');
+        if(regForm.classList.contains('hidden')){
+            clearInterval(disableInterval);
+        }
+    }, 600);
+});
+const modalReg = document.getElementById('regShow').addEventListener('click', function(){
+    entryForm.classList.add('hidden');
+    regForm.classList.remove('hidden');
+    regForm.classList.add('showForm');
+    let disableInterval = setInterval(() => {
+        regForm.style.opacity = '100';
+        entryForm.style.opacity = '0';
+        if(regForm.classList.contains('showForm')){
+            clearInterval(disableInterval);
+        }
+    }, 200);
 });
 const profileEntry = document.getElementById('profileEntry').addEventListener('click', function(event){
     event.preventDefault();
@@ -64,6 +107,25 @@ const profileEntry = document.getElementById('profileEntry').addEventListener('c
     body.classList.add('notScroll');
     parentModal.classList.remove('hidden');
     parentModal.classList.add('showModal');
+    entryForm.classList.remove('hidden');
+    regForm.classList.add('hidden');
+    regForm.classList.remove('showForm');
+});
+const profileReg = document.getElementById('profileRegistration').addEventListener('click', function(event){
+    event.preventDefault();
+    let modalInterval = setInterval(() => {
+        modal.style.opacity = '100';
+        if(modal.style.opacity == '100'){
+            clearInterval(modalInterval);
+        }
+    }, 100)
+    bgModal.classList.remove('hidden');
+    body.classList.add('notScroll');
+    parentModal.classList.remove('hidden');
+    parentModal.classList.add('showModal');
+    entryForm.classList.add('hidden');
+    regForm.classList.remove('hidden');
+    regForm.classList.add('showForm');
 });
 let currentImage = 0;
 let startX = 0;
