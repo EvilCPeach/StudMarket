@@ -13,6 +13,7 @@
             $prepareInsert->bindParam(':email', $inputEmail);
             $resultPrepare = $prepareInsert->execute();
             if($resultPrepare){
+                header('location: ../index.php');
                 $resultPrepare = null;
                 $link = null;
             }

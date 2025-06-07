@@ -11,7 +11,7 @@
     padding: 0;
 }
 *::selection{
-    color: white;
+    color: #59a0e7;
     background: none;
 }
 h1,h2,h3,h4,h5{
@@ -174,8 +174,8 @@ a:active{
     transition-duration: 0.6s;
 }
 .parentModal{
-    position: absolute;
-    top: 0;
+    position: fixed;
+    top: 50px;
     z-index: 15;
     width: 65%;
     height: 400px;
@@ -208,9 +208,12 @@ a:active{
 .modalEntry{
     margin: 0 20px;
 }
+.modalEntry:hover,.registration:hover{
+    cursor: pointer;
+}
 .closeModal{
     position: relative;
-    right: -110px;
+    right: -90px;
     transition-duration: 0.6s;
 }
 .closeModal:hover{
@@ -265,6 +268,9 @@ a:active{
     max-width: 30px;
     max-height: 30px;
 }
+.entryShow:hover,.regShow:hover{
+    color: #FF6B35;
+}
 .slider{
     background-color: crimson;
     height: 800px;
@@ -290,7 +296,7 @@ a:active{
     right: 50px;
 }
 .images{
-    width: 5615px;
+    width: 5770px;
     transition-duration: 0.6s;
 }
 .image{
@@ -305,6 +311,26 @@ a:active{
 .image:last-child{
     background-color: darkred;
 }
+.aboutUs{
+    width: 100%;
+}
+.contentAboutUs{
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+}
+.textAboutUs{
+    max-width: 250px;
+    margin: 140px 0 0 0;
+    font-size: 22px;
+}
+.imagesAboutUs{
+    background-image: url(../images/Group_1.svg);
+    background-repeat: no-repeat;
+    width: 815px;
+    height: 770px;
+}
 .title{
     width: 100%;
     height: 50px;
@@ -313,11 +339,49 @@ a:active{
     text-align: center;
     font-size: 22px;
 }
+.cards{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-flow: row wrap;
+}
+.cardPortfolio{
+    max-width: 300px;
+    max-height: 200px;
+    border: 1px solid black;
+    border-radius: 20px 20px 0 0;
+}
+.cardPortfolio>img{
+    width: 100%;
+    height: 100px;
+    border-style: none;
+    border-radius: 20px 20px 0 0;
+    object-fit: cover;
+}
 footer{
-    background-color: rgb(55, 165, 156);
+    background-color: #59a0e7;
     height: 126px;
     position: static;
     bottom: 0;
+    display: grid;
+    grid-template-columns: repeat(12,1fr);
+}
+footer>.logo{
+    grid-column: 2 / 3;
+}
+.footer-links{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: space-around;
+    grid-column: 4 / 8;
+}
+footer>.copyright{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    grid-column: 9 / 12;
+    font-size: 21px;
 }
 @media screen and (max-width:810px) {
     header{
